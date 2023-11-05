@@ -17,17 +17,17 @@
     let isMuted = false;
 
     const toggleMute = (value = true) => {
-        isMuted = value
+        isMuted = value;
 
         const elMuteBtn = document.querySelector('button.ytp-mute-button');
-        const isVideoMuted = !document.getElementById('ytp-id-15');
+        const isVideoMuted = !document.querySelector('path.ytp-svg-volume-animation-speaker');
 
         if (elMuteBtn && (value !== isVideoMuted)) {
             elMuteBtn.click();
         }
     }
 
-    setInterval(() => {
+    const processDOM = () => {
         const isAddVisible = !!document.querySelector('span.ytp-ad-preview-container');
         const elSkipBtn = document.querySelector('button.ytp-ad-skip-button');
 
@@ -39,5 +39,8 @@
         } else if (!isAddVisible && isMuted) {
             toggleMute(false);
         }
-    }, interval);
+    }
+
+    processDOM();
+    setInterval(() => processDOM(), interval);
 })();
