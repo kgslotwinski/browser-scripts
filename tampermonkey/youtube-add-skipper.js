@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YouTube Add Skipper
-// @version      0.1
+// @version      1.0
 // @description  YouTube add skipping script
 // @author       Konrad Słotwiński
 // @match        https://youtube.com/*
