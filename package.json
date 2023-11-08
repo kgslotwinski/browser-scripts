@@ -1,0 +1,9 @@
+{
+  "name": "browser-scripts",
+  "version": "1.0.0",
+  "description": "Script for browser console/plugins",
+  "author": "Konrad Słotwiński",
+  "dependencies": {
+    "@npmcli/eslint-config": "^4.0.2"
+  }
+}

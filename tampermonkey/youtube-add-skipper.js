@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         YouTube Add Skipper
-// @version      1.0
+// @version      1.1
 // @description  YouTube add skipping script
 // @author       Konrad Słotwiński
+// @source       https://github.com/kgslotwinski
 // @match        https://youtube.com/*
 // @match        https://www.youtube.com/*
 // @match        https://m.youtube.com/*
@@ -12,35 +13,35 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
-    const interval = 1000;
-    let isMuted = false;
+  'use strict'
+  const processingInterval = 750
+  let isMuted = false
 
-    const toggleMute = (value = true) => {
-        isMuted = value;
+  const toggleMute = (value = true) => {
+    isMuted = value
 
-        const elMuteBtn = document.querySelector('button.ytp-mute-button');
-        const isVideoMuted = !document.querySelector('path.ytp-svg-volume-animation-speaker');
+    const elMuteBtn = document.querySelector('button.ytp-mute-button')
+    const isVideoMuted = !document.querySelector('path.ytp-svg-volume-animation-speaker')
 
-        if (elMuteBtn && (value !== isVideoMuted)) {
-            elMuteBtn.click();
-        }
+    if (elMuteBtn && (value !== isVideoMuted)) {
+      elMuteBtn.click()
     }
+  }
 
-    const processDOM = () => {
-        const isAddVisible = !!document.querySelector('span.ytp-ad-preview-container');
-        const elSkipBtn = document.querySelector('button.ytp-ad-skip-button');
+  const processDOM = () => {
+    const isAddVisible = !!document.querySelector('span.ytp-ad-preview-container')
+    const elSkipBtn = document.querySelector('button.ytp-ad-skip-button')
 
-        if (elSkipBtn) {
-            elSkipBtn.click();
-            toggleMute(false);
-        } else if (isAddVisible && !isMuted) {
-            toggleMute();
-        } else if (!isAddVisible && isMuted) {
-            toggleMute(false);
-        }
+    if (elSkipBtn) {
+      elSkipBtn.click()
+      toggleMute(false)
+    } else if (isAddVisible && !isMuted) {
+      toggleMute()
+    } else if (!isAddVisible && isMuted) {
+      toggleMute(false)
     }
+  }
 
-    processDOM();
-    setInterval(() => processDOM(), interval);
-})();
+  processDOM()
+  setInterval(() => processDOM(), processingInterval)
+})()
