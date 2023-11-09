@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YouTube Add Skipper
-// @version      1.1
+// @version      1.2
 // @description  YouTube add skipping script
 // @author       Konrad Słotwiński
 // @source       https://github.com/kgslotwinski
@@ -40,6 +40,9 @@
     } else if (!isAddVisible && isMuted) {
       toggleMute(false)
     }
+
+    const elPopUpDismissBtn = document.querySelector('.ytd-popup-container #dismiss-button')
+    elPopUpDismissBtn && elPopUpDismissBtn.click()
   }
 
   processDOM()
