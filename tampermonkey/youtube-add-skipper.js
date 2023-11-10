@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         YouTube Add Skipper
-// @version      1.2
+// @version      1.3
 // @description  YouTube add skipping script
 // @author       Konrad Słotwiński
 // @source       https://github.com/kgslotwinski
@@ -30,7 +30,9 @@
 
   const processDOM = () => {
     const isAddVisible = !!document.querySelector('span.ytp-ad-preview-container')
-    const elSkipBtn = document.querySelector('button.ytp-ad-skip-button')
+    const elSkipBtn = document.querySelector(
+      ['button.ytp-ad-skip-button', 'button.ytp-ad-skip-button-modern'].join(', ')
+    )
 
     if (elSkipBtn) {
       elSkipBtn.click()

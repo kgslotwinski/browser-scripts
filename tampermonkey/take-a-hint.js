@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Take a Hint!
-// @version      1.0
+// @version      1.1
 // @description  Page hinting script for keyboard navigation
 // @author       Konrad Słotwiński
 // @source       https://github.com/kgslotwinski
@@ -21,7 +21,8 @@
     'a',
     'button',
     'input',
-    '[onclick]:not([onclick=""]',
+    '[onclick]:not([onclick=""])',
+    '[role="tab"]',
   ]
 
   // eslint-disable-next-line no-undef
