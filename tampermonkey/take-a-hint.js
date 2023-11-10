@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Take a Hint!
-// @version      1.1
+// @version      1.2
 // @description  Page hinting script for keyboard navigation
 // @author       Konrad Słotwiński
 // @source       https://github.com/kgslotwinski
@@ -15,6 +15,7 @@
   const letters = [...Array(26).keys()]
     .map((n) => String.fromCharCode(97 + n))
 
+  const hintEnableKey = 'q'
   const selectTimeout = 500
   const className = 'tah'
   const selectors = [
@@ -23,6 +24,7 @@
     'input',
     '[onclick]:not([onclick=""])',
     '[role="tab"]',
+    '[role="button"]',
   ]
 
   // eslint-disable-next-line no-undef
@@ -89,12 +91,12 @@
   }
 
   document.addEventListener('keyup', ({ key, ctrlKey }) => {
-    if (key === '`' && ctrlKey) {
+    if (key === hintEnableKey && ctrlKey) {
       clearState()
       showHints()
     } else if (key === 'Escape') {
       clearState()
-    } else if (letters.includes(key)) {
+    } else if (letters.includes(key) && !ctrlKey) {
       hintSelect = `${hintSelect}${key}`
       hintSelectTimeout && clearTimeout(hintSelectTimeout)
       hintSelectTimeout = setTimeout(() => {
